@@ -1,0 +1,27 @@
+{
+  "name": "studybot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Telegram-бот StudyBot: розклад, дедлайни, кроки, конспекти, тести і план підготовки до НМТ на безкоштовних тарифах Cloudflare і Groq",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "wrangler dev --test-scheduled",
+    "deploy": "wrangler deploy",
+    "db:migrate": "wrangler d1 migrations apply studybot --remote",
+    "db:migrate:local": "wrangler d1 migrations apply studybot --local",
+    "logs": "wrangler tail --format pretty",
+    "types": "wrangler types",
+    "typecheck": "wrangler types && tsc --noEmit && tsc --noEmit -p test/tsconfig.json",
+    "test": "vitest run",
+    "e2e": "node scripts/e2e.mjs"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "1.4.7",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5",
+    "wrangler": "4.152.0"
+  }
+}
